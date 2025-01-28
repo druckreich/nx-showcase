@@ -1,0 +1,27 @@
+<mat-toolbar><span>NX-SHOWCASE</span></mat-toolbar>
+
+<mat-sidenav-container style="height: 100%">
+  <mat-sidenav position="start" mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item>
+        <a matListItemTitle href="./signals">SIGNALS</a>
+        <button mat-icon-button matListItemMeta></button>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-list-item>
+        <a matListItemTitle href="./template">TEMPLATE SYNTAX</a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="display: flex; justify-content: center; height: 100%">
+      <div style="width: 1180px; height: 100%">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
