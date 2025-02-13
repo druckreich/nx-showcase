@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatButton} from '@angular/material/button';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-template',
@@ -7,15 +9,13 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/mat
     MatCard,
     MatCardContent,
     MatCardHeader,
-    MatCardTitle
+    MatCardTitle,
+    MatButton,
+    DatePipe
   ],
   templateUrl: './template.component.html',
   styleUrl: './template.component.scss'
 })
 export class TemplateComponent {
-
-  code = '@let name = \'Frodo\';\n' +
-    '<div>Dashboard for {{ name }}</div>\n' +
-    '<div>Hello, {{ name }}</div>'
-
+  protected readonly Date = Date;
 }

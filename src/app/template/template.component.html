@@ -1,0 +1,46 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>
+      TEMPLATE SYNTAX
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <br>
+    @let name = 'Mr. Anderson';
+    @let date = Date();
+    <div>Hello, {{ name }} today ist {{date | date}}</div>
+
+
+
+    <br>
+    @let items = [{id: 0, name: 'item_0'}];
+    @let itemsLength = items.length;
+
+    @switch (itemsLength) {
+      @case (0) {
+        @let elementsLabel = 'element';
+        <span>no {{elementsLabel}} in list</span>
+      }
+      @default {
+        @let elementsLabel = 'elements';
+        <span>{{itemsLength}} {{elementsLabel}} in list</span>
+      }
+    }
+
+    @for (item of items; track item.id) {
+      <li>{{ item.name }}</li>
+    } @empty {
+      <li>There are no items.</li>
+    }
+
+    <button mat-button (click)="items.push({id:itemsLength, name:'item_' + itemsLength})">ADD ITEM</button>
+    <button mat-button (click)="items.pop()" [disabled]="itemsLength == 0">REMOVE ITEM</button>
+
+
+
+  </mat-card-content>
+
+</mat-card>
+
+

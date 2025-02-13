@@ -1,0 +1,7 @@
+<mat-list>
+  @for (user of users(); track user.id) {
+    <mat-list-item>
+      <app-user [user]="user"></app-user>
+    </mat-list-item>
+  }
+</mat-list>

@@ -1,4 +1,4 @@
-import {Component, computed, effect, signal} from '@angular/core';
+import {Component, computed, effect, Signal, signal, WritableSignal} from '@angular/core';
 import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardModule} from '@angular/material/card';
 import {MatButton} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
@@ -19,23 +19,9 @@ import {MatListModule} from '@angular/material/list';
 })
 export class SignalsComponent {
 
-  code = '  count = signal(0);\n' +
-    '  doubleCount = computed(() => this.count() * 2);\n' +
-    '  effectLabel = signal("");\n' +
-    '\n' +
-    '  constructor() {\n' +
-    '    effect(() => {\n' +
-    '      this.effectLabel.set(`The count has changed to ${this.count()}`)\n' +
-    '    });\n' +
-    '  }\n' +
-    '\n' +
-    '  public updateCount() {\n' +
-    '    this.count.set(this.count() + 1);\n' +
-    '  }'
-
-  count = signal(0);
-  doubleCount = computed(() => this.count() * 2);
-  effectLabel = signal("");
+  count: WritableSignal<number> = signal(0);
+  doubleCount: Signal<number> = computed(() => this.count() * 2);
+  effectLabel: WritableSignal<string> = signal("");
 
   constructor() {
     effect(() => {
@@ -44,6 +30,6 @@ export class SignalsComponent {
   }
 
   public updateCount() {
-    this.count.set(this.count() + 1);
+    this.count.update(value => value + 1)
   }
 }
